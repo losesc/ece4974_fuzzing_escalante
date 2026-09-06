@@ -1,0 +1,9 @@
+afl-fuzz [ options ] -- /path/to/fuzzed_app [ ... ]
+
+Required parameters:
+
+Debian clang version 21.1.8 (10)
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/lib/llvm-21/bin
+afl-cc++5.03c by Michal Zalewski, Laszlo Szekeres, Marc Heuse - mode: LLVM-PCGUARD

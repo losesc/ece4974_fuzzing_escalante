@@ -1,0 +1,8 @@
+*.o
+*.so
+crash_me
+crash_me_*
+test_asan
+test_sanitizers
+out*/
+in*/
