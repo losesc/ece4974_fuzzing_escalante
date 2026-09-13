@@ -1,4 +1,4 @@
-# Milestone 1 — setup notes
+# Milestone 1 - setup notes
 
 ## Environment
 
