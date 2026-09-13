@@ -1,0 +1,122 @@
+=== slide version: a[42], ASan+UBSan, -O1 ===
+test_sanitizers.c:4:12: warning: array index 42 is past the end of the array (that has type 'int[10]') [-Warray-bounds]
+    4 |     return a[42];
+      |            ^ ~~
+test_sanitizers.c:3:5: note: array 'a' declared here
+    3 |     int a[10];
+      |     ^
+1 warning generated.
+test_sanitizers.c:4:12: runtime error: index 42 out of bounds for type 'int[10]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior test_sanitizers.c:4:12 
+test_sanitizers.c:4:12: runtime error: load of address 0x7b1e3c0000c8 with insufficient space for an object of type 'int'
+0x7b1e3c0000c8: note: pointer points here
+ 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior test_sanitizers.c:4:12 
+exit: 0
+
+=== fixed version: runtime index, ASan+UBSan, -O1 ===
+test_asan.c:5:12: runtime error: index 10 out of bounds for type 'int[10]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior test_asan.c:5:12 
+=================================================================
+==19756==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7b7be0000048 at pc 0x56393d562c7b bp 0x7ffeacdd4d90 sp 0x7ffeacdd4d88
+READ of size 4 at 0x7b7be0000048 thread T0
+    #0 0x56393d562c7a in main /home/losesc/ece4974/milestone1/test_asan.c:5:12
+    #1 0x7f7be202ef76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #2 0x7f7be202f026 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a026) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #3 0x56393d479360 in _start (/tmp/ts2+0x2c360) (BuildId: d86178d3eebcc438e1c878cb82c8eeb0a70fc71f)
+
+Address 0x7b7be0000048 is located in stack of thread T0 at offset 72 in frame
+    #0 0x56393d562ac7 in main /home/losesc/ece4974/milestone1/test_asan.c:2
+
+  This frame has 1 object(s):
+    [32, 72) 'a' (line 3) <== Memory access at offset 72 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/losesc/ece4974/milestone1/test_asan.c:5:12 in main
+Shadow bytes around the buggy address:
+  0x7b7bdffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7bdffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7bdffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7bdfffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7bdfffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7b7be0000000: f1 f1 f1 f1 00 00 00 00 00[f3]f3 f3 f3 f3 f3 f3
+  0x7b7be0000080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7be0000100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7be0000180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7be0000200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7be0000280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==19756==ABORTING
+exit: 1
+
+=== fixed version at -O0 ===
+test_asan.c:5:12: runtime error: index 10 out of bounds for type 'int[10]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior test_asan.c:5:12 
+=================================================================
+==19761==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7b7cdee00048 at pc 0x562e72e88cc4 bp 0x7ffd19024df0 sp 0x7ffd19024de8
+READ of size 4 at 0x7b7cdee00048 thread T0
+    #0 0x562e72e88cc3 in main /home/losesc/ece4974/milestone1/test_asan.c:5:12
+    #1 0x7f7ce0f4cf76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #2 0x7f7ce0f4d026 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a026) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #3 0x562e72d9f360 in _start (/tmp/ts3+0x2c360) (BuildId: 675cda68e223ca11f5224ee2af06d9f1e95e46a6)
+
+Address 0x7b7cdee00048 is located in stack of thread T0 at offset 72 in frame
+    #0 0x562e72e88ac7 in main /home/losesc/ece4974/milestone1/test_asan.c:2
+
+  This frame has 1 object(s):
+    [32, 72) 'a' (line 3) <== Memory access at offset 72 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/losesc/ece4974/milestone1/test_asan.c:5:12 in main
+Shadow bytes around the buggy address:
+  0x7b7cdedffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7cdedffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7cdedffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7cdedfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7cdedfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7b7cdee00000: f1 f1 f1 f1 00 00 00 00 00[f3]f3 f3 f3 f3 f3 f3
+  0x7b7cdee00080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7cdee00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7cdee00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7cdee00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b7cdee00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==19761==ABORTING
+exit: 1

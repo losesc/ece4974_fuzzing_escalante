@@ -19,7 +19,7 @@ Clang/LLVM and build tools, ASan/UBSan verification, AFL++ build and install,
 and an end-to-end fuzzing run against a demo target.
 
 Terminal transcripts for each step are in step2-step5 text files.
-`NOTES.md` documents two places where the demo programs behaved differently
+`notes.md` documents two places where the demo programs behaved differently
 on Clang 21 than on the Clang 14/18 the course slides target, and how each
 was resolved.
 
