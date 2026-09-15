@@ -1,4 +1,4 @@
-# Build commands — json-c 0.13.1 (findings F2, F3)
+# Build commands - json-c 0.13.1 ( F2, F3)
 
 Target: https://github.com/json-c/json-c @ tag `json-c-0.13.1-20180305`
 Toolchain: Kali Linux, clang/LLVM 21.1.8
@@ -22,10 +22,10 @@ make -j$(nproc) 2>&1 | tee build.log
 cd ..
 ```
 
-Two flags are specific to this older release:
-- `-DCMAKE_POLICY_VERSION_MINIMUM=3.5` — modern cmake dropped the old
+Two flags are specific to this older release
+- `-DCMAKE_POLICY_VERSION_MINIMUM=3.5` - modern cmake dropped the old
   `cmake_minimum_required` version this release declares.
-- `-Wno-implicit-const-int-float-conversion` (and the two others) — 0.13.x
+- `-Wno-implicit-const-int-float-conversion` (and the two others) - 0.13.x
   appends `-Werror` *after* CMAKE_C_FLAGS, so `-DDISABLE_WERROR=ON` alone is not
   enough; the specific warnings clang 21 raises must be silenced so the appended
   `-Werror` has nothing to promote.
