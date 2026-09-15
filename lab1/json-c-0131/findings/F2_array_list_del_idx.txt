@@ -1,0 +1,18 @@
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==30457==ERROR: AddressSanitizer: SEGV on unknown address 0xfffffffffffffff8 (pc 0x555b05f57f19 bp 0x7ffde1021ea0 sp 0x7ffde1021e40 T0)
+==30457==The signal is caused by a READ memory access.
+    #0 0x555b05f57f19 in array_list_free /home/losesc/ece4974/lab1/json-c-0131/arraylist.c:61:23
+    #1 0x555b05f57b00 in main /home/losesc/ece4974/lab1/json-c-0131/poc_F2_del_idx.c:9:5
+    #2 0x7ff2cc2a0f76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #3 0x7ff2cc2a1026 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a026) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #4 0x555b05e6e360 in _start (/home/losesc/ece4974/lab1/json-c-0131/poc_F2+0x2e360) (BuildId: a9b6f90331a15e3b5c46d94b7973d88dd9236d60)
+
+==30457==Register values:
+rax = 0x00000f84596bc00b  rbx = 0x1000000000000000  rcx = 0x0000000000000000  rdx = 0x0000000000000000  
+rdi = 0x00007c22cb5e0040  rsi = 0x00007c22cb5e0058  rbp = 0x00007ffde1021ea0  rsp = 0x00007ffde1021e40  
+ r8 = 0x00007c22cb5e0048   r9 = 0x0000000000000000  r10 = 0x00007fffffffff01  r11 = 0xafffff00000fff01  
+r12 = 0x00000f84596bc008  r13 = 0x00007d02cb5e0040  r14 = 0x0000000000000000  r15 = 0x00007d02cb5e0040  
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/losesc/ece4974/lab1/json-c-0131/arraylist.c:61:23 in array_list_free
+==30457==ABORTING

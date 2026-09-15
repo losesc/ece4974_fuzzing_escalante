@@ -1,3 +1,4 @@
+# --- Milestone 1 (restored) ---
 *.o
 *.so
 crash_me
@@ -6,3 +7,34 @@ test_asan
 test_sanitizers
 out*/
 in*/
+
+# --- Lab 1: json-c source trees are re-cloned per BUILD.md, not committed ---
+lab1/json-c/*
+lab1/json-c-0131/*
+
+# keep MY files inside them
+!lab1/json-c/trigger.c
+!lab1/json-c/drive_json.c
+!lab1/json-c/make_corpus.py
+!lab1/json-c/BUILD.md
+!lab1/json-c/findings/
+!lab1/json-c/build-asan/
+!lab1/json-c-0131/poc_F2_del_idx.c
+!lab1/json-c-0131/poc_F3_neg_depth.c
+!lab1/json-c-0131/BUILD.md
+!lab1/json-c-0131/findings/
+!lab1/json-c-0131/build-asan/
+
+# inside build-asan, keep only the two text artifacts, not the binaries
+lab1/json-c/build-asan/*
+lab1/json-c-0131/build-asan/*
+!lab1/json-c/build-asan/build.log
+!lab1/json-c/build-asan/nm_evidence.txt
+!lab1/json-c-0131/build-asan/build.log
+!lab1/json-c-0131/build-asan/nm_evidence.txt
+
+# compiled binaries — never commit
+lab1/json-c/trigger
+lab1/json-c/drive_json
+lab1/json-c-0131/poc_F2
+lab1/json-c-0131/poc_F3

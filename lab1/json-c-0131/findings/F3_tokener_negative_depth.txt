@@ -1,0 +1,10 @@
+=================================================================
+==30459==ERROR: AddressSanitizer: calloc parameters overflow: count * size (-1 * 32) cannot be represented in type size_t (thread T0)
+    #0 0x55df62e6dcbd in calloc (/home/losesc/ece4974/lab1/json-c-0131/poc_F3+0x100cbd) (BuildId: 9941d6ebb4ff5af184595d631c556e5ae2dcdbc9)
+    #1 0x55df62ebd373 in json_tokener_new_ex /home/losesc/ece4974/lab1/json-c-0131/json_tokener.c:115:45
+    #2 0x55df62eb1ca8 in main /home/losesc/ece4974/lab1/json-c-0131/poc_F3_neg_depth.c:4:30
+    #3 0x7f476eeaff76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+
+==30459==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: calloc-overflow (/home/losesc/ece4974/lab1/json-c-0131/poc_F3+0x100cbd) (BuildId: 9941d6ebb4ff5af184595d631c556e5ae2dcdbc9) in calloc
+==30459==ABORTING

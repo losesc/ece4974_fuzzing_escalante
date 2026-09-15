@@ -1,0 +1,3 @@
+# 0.15 trigger (F1)
+nm __asan count: 698
+ldd asan lines: 0

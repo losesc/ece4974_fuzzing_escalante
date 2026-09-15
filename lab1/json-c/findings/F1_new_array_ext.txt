@@ -1,0 +1,11 @@
+=================================================================
+==30479==ERROR: AddressSanitizer: requested allocation size 0xfffffffc00000008 (0xfffffffc00001008 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x562d35023a58 in malloc (/home/losesc/ece4974/lab1/json-c/trigger+0x102a58) (BuildId: 1c3774b421e48e402cee0e77d0f46a922514ba02)
+    #1 0x562d35080ba0 in array_list_new2 /home/losesc/ece4974/lab1/json-c/arraylist.c:54:30
+    #2 0x562d3506fc25 in json_object_new_array_ext /home/losesc/ece4974/lab1/json-c/json_object.c:1441:17
+    #3 0x562d35067c15 in main /home/losesc/ece4974/lab1/json-c/trigger.c:4:29
+    #4 0x7f46264bdf76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+
+==30479==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big (/home/losesc/ece4974/lab1/json-c/trigger+0x102a58) (BuildId: 1c3774b421e48e402cee0e77d0f46a922514ba02) in malloc
+==30479==ABORTING

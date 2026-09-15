@@ -1,0 +1,30 @@
+[  3%] Building C object CMakeFiles/json-c.dir/arraylist.c.o
+[  7%] Building C object CMakeFiles/json-c-static.dir/arraylist.c.o
+[ 14%] Building C object CMakeFiles/json-c.dir/json_c_version.c.o
+[ 14%] Building C object CMakeFiles/json-c.dir/debug.c.o
+[ 17%] Building C object CMakeFiles/json-c.dir/json_object.c.o
+[ 21%] Building C object CMakeFiles/json-c.dir/json_object_iterator.c.o
+[ 25%] Building C object CMakeFiles/json-c.dir/json_pointer.c.o
+[ 28%] Building C object CMakeFiles/json-c-static.dir/debug.c.o
+[ 32%] Building C object CMakeFiles/json-c.dir/json_tokener.c.o
+[ 35%] Building C object CMakeFiles/json-c-static.dir/json_c_version.c.o
+[ 39%] Building C object CMakeFiles/json-c-static.dir/json_object.c.o
+[ 42%] Building C object CMakeFiles/json-c-static.dir/json_object_iterator.c.o
+[ 46%] Building C object CMakeFiles/json-c.dir/json_util.c.o
+[ 50%] Building C object CMakeFiles/json-c-static.dir/json_pointer.c.o
+[ 53%] Building C object CMakeFiles/json-c-static.dir/json_tokener.c.o
+[ 57%] Building C object CMakeFiles/json-c.dir/json_visit.c.o
+[ 60%] Building C object CMakeFiles/json-c-static.dir/json_util.c.o
+[ 64%] Building C object CMakeFiles/json-c.dir/linkhash.c.o
+[ 67%] Building C object CMakeFiles/json-c-static.dir/json_visit.c.o
+[ 71%] Building C object CMakeFiles/json-c-static.dir/linkhash.c.o
+[ 75%] Building C object CMakeFiles/json-c-static.dir/printbuf.c.o
+[ 78%] Building C object CMakeFiles/json-c.dir/printbuf.c.o
+[ 82%] Building C object CMakeFiles/json-c-static.dir/random_seed.c.o
+[ 85%] Building C object CMakeFiles/json-c.dir/random_seed.c.o
+[ 89%] Building C object CMakeFiles/json-c-static.dir/strerror_override.c.o
+[ 92%] Building C object CMakeFiles/json-c.dir/strerror_override.c.o
+[ 96%] Linking C shared library libjson-c.so
+[ 96%] Built target json-c
+[100%] Linking C static library libjson-c.a
+[100%] Built target json-c-static
