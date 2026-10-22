@@ -1,0 +1,4 @@
+zlib: v1.3.2 da607da
+libpng: v1.6.59 cd952f49f
+[0;36mafl-fuzz++5.03c[0m
+Debian clang version 21.1.8 (10)

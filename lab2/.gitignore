@@ -1,0 +1,15 @@
+# external clones & build trees
+src/
+install/
+install-old/
+# AFL run output (huge)
+campaign/
+out/
+out_smoke/
+# compiled binaries / objects
+fuzz_v2_new
+fuzz_v2_old
+libpng_fuzz
+*.o
+# full seed corpus is downloadable; keep seeds_min/
+seeds/

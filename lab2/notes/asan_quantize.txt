@@ -1,0 +1,54 @@
+=================================================================
+==3946201==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x7d48bf9e1908 at pc 0x555983a085db bp 0x7ffd5d2c43f0 sp 0x7ffd5d2c43e8
+READ of size 8 at 0x7d48bf9e1908 thread T0
+    #0 0x555983a085da in png_set_quantize /home/losesc/ece4974/lab2/src/libpng-old/pngrtran.c:716:20
+    #1 0x5559839c67b1 in lowlevel /home/losesc/ece4974/lab2/harness_v2.c:30:7
+    #2 0x5559839c5eb1 in main /home/losesc/ece4974/lab2/harness_v2.c:71:3
+    #3 0x7f18c0797f76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #4 0x7f18c0798026 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a026) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #5 0x5559838dc4c0 in _start (/home/losesc/ece4974/lab2/fuzz_v2_old+0x5f4c0) (BuildId: 4e46031c52d4018444b65feeeb7a7824a2838181)
+
+0x7d48bf9e1908 is located 0 bytes after 6152-byte region [0x7d48bf9e0100,0x7d48bf9e1908)
+allocated by thread T0 here:
+    #0 0x555983981a68 in malloc (/home/losesc/ece4974/lab2/fuzz_v2_old+0x104a68) (BuildId: 4e46031c52d4018444b65feeeb7a7824a2838181)
+    #1 0x5559839eb9f4 in png_malloc_base /home/losesc/ece4974/lab2/src/libpng-old/pngmem.c:97:11
+    #2 0x5559839eb9f4 in png_malloc /home/losesc/ece4974/lab2/src/libpng-old/pngmem.c:177:10
+    #3 0x5559839eb8c5 in png_calloc /home/losesc/ece4974/lab2/src/libpng-old/pngmem.c:53:10
+    #4 0x555983a0533b in png_set_quantize /home/losesc/ece4974/lab2/src/libpng-old/pngrtran.c:667:30
+    #5 0x5559839c67b1 in lowlevel /home/losesc/ece4974/lab2/harness_v2.c:30:7
+    #6 0x5559839c5eb1 in main /home/losesc/ece4974/lab2/harness_v2.c:71:3
+    #7 0x7f18c0797f76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/losesc/ece4974/lab2/src/libpng-old/pngrtran.c:716:20 in png_set_quantize
+Shadow bytes around the buggy address:
+  0x7d48bf9e1680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7d48bf9e1700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7d48bf9e1780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7d48bf9e1800: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7d48bf9e1880: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x7d48bf9e1900: 00[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7d48bf9e1980: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7d48bf9e1a00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7d48bf9e1a80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7d48bf9e1b00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x7d48bf9e1b80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3946201==ABORTING
