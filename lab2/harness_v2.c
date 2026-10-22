@@ -21,8 +21,7 @@ static void lowlevel(const unsigned char *buf, size_t len, unsigned f1, unsigned
   png_set_read_fn(png, &s, read_cb);
   png_read_info(png, info);
 #ifdef PNG_READ_QUANTIZE_SUPPORTED
-  /* Reach png_do_quantize (CVE-2025-64505). Palette images only; use the
-     image's own PLTE. f2 varies maximum_colors to hit both paths. */
+
   if ((f2 & 1) && (png_get_color_type(png, info) & PNG_COLOR_MASK_PALETTE)) {
     png_colorp pal; int np;
     if (png_get_PLTE(png, info, &pal, &np) && np > 0) {
