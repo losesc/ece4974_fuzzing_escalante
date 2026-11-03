@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 cd ~/ece4974/lab2
 S=seeds_min
 D=/usr/local/share/afl/dictionaries/png.dict

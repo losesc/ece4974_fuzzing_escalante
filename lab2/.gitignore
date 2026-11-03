@@ -13,3 +13,5 @@ libpng_fuzz
 *.o
 # full seed corpus is downloadable; keep seeds_min/
 seeds/
+
+!raw/
