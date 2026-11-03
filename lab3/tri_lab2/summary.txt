@@ -1,0 +1,7 @@
+== lab2: 13 raw -> 13 reproducible (100%) -> 1 unique (top-3 stack)
+
+count bucket   class / top-3 frames
+     13 8a322d12 "AddressSanitizer: heap-buffer-overflow" "png_set_quantize pngrtran.c:716|lowlevel harness_v2.c:30|main harness_v2.c:71|"
+
+minimized reproducers:
+8a322d12 s1_id:000009 231B -> 85B bucket:same

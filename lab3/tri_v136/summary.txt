@@ -1,0 +1,7 @@
+== v136: 81 raw -> 81 reproducible (100%) -> 1 unique (top-3 stack)
+
+count bucket   class / top-3 frames
+     81 a6e80f17 "AddressSanitizer: stack-use-after-return" "png_safe_execute pngerror.c:954|png_image_free png.c:4592|png_image_finish_read pngread.c:4187|"
+
+minimized reproducers:
+a6e80f17 s1_id:000012 112B -> 10B bucket:CHANGED

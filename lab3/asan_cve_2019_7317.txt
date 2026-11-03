@@ -1,0 +1,20 @@
+libpng error: EOF
+=================================================================
+==31681==ERROR: AddressSanitizer: stack-use-after-return on address 0x7be6fda000b0 at pc 0x555605f4fa07 bp 0x7ffd06ed4cf0 sp 0x7ffd06ed4ce8
+WRITE of size 8 at 0x7be6fda000b0 thread T0
+    #0 0x555605f4fa06 in png_safe_execute /home/losesc/ece4974/lab2/src/libpng-136/pngerror.c:954:29
+    #1 0x555605f48495 in png_image_free /home/losesc/ece4974/lab2/src/libpng-136/png.c:4592:13
+    #2 0x555605f4f859 in png_safe_execute /home/losesc/ece4974/lab2/src/libpng-136/pngerror.c:958:7
+    #3 0x555605f31efd in simplified /home/losesc/ece4974/lab3/harness_v2.c:54:8
+    #4 0x555605f31efd in main /home/losesc/ece4974/lab3/harness_v2.c:72:3
+    #5 0x7fe6ffb08f76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #6 0x7fe6ffb09026 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a026) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #7 0x555605e484c0 in _start (/home/losesc/ece4974/lab3/fuzz_136+0x604c0) (BuildId: 32931c7c1f43e5db9c983f89a3d5b4672ba082e0)
+
+Address 0x7be6fda000b0 is located in stack of thread T0 at offset 48 in frame
+    #0 0x555605f48537 in png_image_free_function /home/losesc/ece4974/lab2/src/libpng-136/png.c:4523
+
+  This frame has 1 object(s):
+    [32, 80) 'c' (line 4526) <== Memory access at offset 48 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)

@@ -1,0 +1,53 @@
+libpng error: EOF
+=================================================================
+==31657==ERROR: AddressSanitizer: stack-use-after-return on address 0x7b2155e000b0 at pc 0x559052562a07 bp 0x7ffcd7936cb0 sp 0x7ffcd7936ca8
+WRITE of size 8 at 0x7b2155e000b0 thread T0
+    #0 0x559052562a06 in png_safe_execute /home/losesc/ece4974/lab2/src/libpng-136/pngerror.c:954:29
+    #1 0x55905255b495 in png_image_free /home/losesc/ece4974/lab2/src/libpng-136/png.c:4592:13
+    #2 0x559052562859 in png_safe_execute /home/losesc/ece4974/lab2/src/libpng-136/pngerror.c:958:7
+    #3 0x559052544efd in simplified /home/losesc/ece4974/lab3/harness_v2.c:54:8
+    #4 0x559052544efd in main /home/losesc/ece4974/lab3/harness_v2.c:72:3
+    #5 0x7f2157e23f76  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x29f76) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #6 0x7f2157e24026 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a026) (BuildId: fdce52df7ab391982f6de31414f29957668212ff)
+    #7 0x55905245b4c0 in _start (/home/losesc/ece4974/lab3/fuzz_136+0x604c0) (BuildId: 32931c7c1f43e5db9c983f89a3d5b4672ba082e0)
+
+Address 0x7b2155e000b0 is located in stack of thread T0 at offset 48 in frame
+    #0 0x55905255b537 in png_image_free_function /home/losesc/ece4974/lab2/src/libpng-136/png.c:4523
+
+  This frame has 1 object(s):
+    [32, 80) 'c' (line 4526) <== Memory access at offset 48 is inside this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return /home/losesc/ece4974/lab2/src/libpng-136/pngerror.c:954:29 in png_safe_execute
+Shadow bytes around the buggy address:
+  0x7b2155dffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b2155dffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b2155dfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b2155dfff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b2155e00000: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x7b2155e00080: f5 f5 f5 f5 f5 f5[f5]f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7b2155e00100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b2155e00180: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b2155e00200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b2155e00280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7b2155e00300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==31657==ABORTING
