@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-# afl-tmin EVERY reproducible crash, then re-bucket the minimized file.
 NAME=$1; BIN=$2; T=tri_$NAME; mkdir -p $T/min_all
 key() { grep -E '^ *#[0-9]+ ' | head -3 | sed -E 's/^ *#[0-9]+ 0x[0-9a-f]+ in //; s/:[0-9]+$//; s#/home/[^ ]*/##; s/ \(.*\)$//' | tr '\n' '|'; }
 echo "file,orig_bytes,min_bytes,orig_bucket,min_bucket" > $T/min_all.csv
