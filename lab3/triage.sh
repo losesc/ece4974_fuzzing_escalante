@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-# Lab 3 triage funnel: collect -> reproduce -> minimize -> dedup (top-3 stack hash).
-#   ./triage.sh <name> <replay_binary> <crash_dir>...
 set -uo pipefail
 NAME=$1; BIN=$2; shift 2
 OUT=tri_$NAME; rm -rf "$OUT"; mkdir -p "$OUT"/{all,min,reports}
