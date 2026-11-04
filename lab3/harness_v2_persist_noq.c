@@ -1,4 +1,3 @@
-/* Persistent-mode wrapper around the frozen Lab 2 harness (Part 4). */
 #include <png.h>
 #undef PNG_READ_QUANTIZE_SUPPORTED /* mask known quantize bug */
 #define main harness_v2_stdin_main
